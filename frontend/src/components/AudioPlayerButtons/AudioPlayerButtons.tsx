@@ -1,11 +1,11 @@
 import React from 'react';
-import {SpeakerWaveIcon, SpeakerXMarkIcon, PlayIcon, PauseIcon, ForwardIcon, BackwardIcon} from '@heroicons/react/24/outline';
+import {PlayIcon, PauseIcon, ForwardIcon, BackwardIcon} from '@heroicons/react/24/outline';
 import {music, Song} from '../../objects/music';
 import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
 
 const AudioPlayerButtons: React.FC = () => {
     const context = React.useContext(AudioPlayerContext);
-    const { state: {isPlaying, volume, currentSong, songRef}, actions: {setIsPlaying, setCurrentSong, setVolume}} = context;
+    const { state: {isPlaying, currentSong, songRef}, actions: {setIsPlaying, setCurrentSong, setVolume}} = context;
     
     const handlePlay = (isPlaying: boolean): void => {
         isPlaying ? songRef.current?.pause() : songRef.current?.play();
@@ -27,35 +27,19 @@ const AudioPlayerButtons: React.FC = () => {
        setCurrentSong(music[newIndex]);
     };
     
-    const onVolumeChange = (volume: number): void => {
-       if (volume) {
-           setVolume(0);
-           songRef.current.volume = 0;
-       } else {
-           setVolume(50);
-           songRef.current.volume = 50 / 100;
-       }
-    };
-    
     return (
         <div className="audio-player-buttons">
-            <button>
-                <ForwardIcon onClick={() => onSongChange(currentSong, true)}/>
+            <button className="audio-player-buttons__back">
+                <BackwardIcon onClick={() => onSongChange(currentSong, false)} />
             </button>
-            <button onClick={() => handlePlay(isPlaying)}>
+            <button onClick={() => handlePlay(isPlaying)} className="audio-player-buttons__play">
                 {isPlaying
                     ? <PauseIcon />
                     : <PlayIcon />
                 }
             </button>
-            <button>
-                <BackwardIcon onClick={() => onSongChange(currentSong, false)} />
-            </button>
-            <button onClick={() => onVolumeChange(volume)}>
-                {volume
-                    ? <SpeakerWaveIcon />
-                    : <SpeakerXMarkIcon />
-                }
+            <button className="audio-player-buttons__forward">
+                <ForwardIcon onClick={() => onSongChange(currentSong, true)}/>
             </button>
         </div>
     );
