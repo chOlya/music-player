@@ -1,12 +1,10 @@
 import React from 'react';
+import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
 
-interface Props {
-    volume: number;
-    setVolume: (volume: number) => void;
-    songRef: any;
-}
+const VolumeBar: React.FC = () => {
+    const context = React.useContext(AudioPlayerContext);
+    const { state: {volume, songRef}, actions: {setVolume}} = context;
 
-const VolumeBar: React.FC<Props> = ({songRef, setVolume, volume}) => {
     const onVolumeChange = (e: any) => {
         setVolume(e.target.value);
         songRef.current.volume = volume / 100;

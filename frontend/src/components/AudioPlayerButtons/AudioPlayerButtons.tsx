@@ -1,26 +1,12 @@
 import React from 'react';
 import {SpeakerWaveIcon, SpeakerXMarkIcon, PlayIcon, PauseIcon, ForwardIcon, BackwardIcon} from '@heroicons/react/24/outline';
 import {music, Song} from '../../objects/music';
+import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
 
-interface Props {
-    isPlaying: boolean;
-    setIsPlaying: any;
-    songRef: any;
-    setCurrentSong: (currentSong: Song) => void;
-    currentSong: Song;
-    setVolume: (volume: number) => void;
-    volume: number;
-}
-
-const AudioPlayerButtons: React.FC<Props> = ({
-    songRef,
-    isPlaying,
-    setIsPlaying,
-    setCurrentSong,
-    currentSong,
-    setVolume,
-    volume
-}) => {
+const AudioPlayerButtons: React.FC = () => {
+    const context = React.useContext(AudioPlayerContext);
+    const { state: {isPlaying, volume, currentSong, songRef}, actions: {setIsPlaying, setCurrentSong, setVolume}} = context;
+    
     const handlePlay = (isPlaying: boolean): void => {
         isPlaying ? songRef.current?.pause() : songRef.current?.play();
         setIsPlaying((prev: boolean) => !prev);

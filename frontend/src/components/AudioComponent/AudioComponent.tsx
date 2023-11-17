@@ -1,16 +1,11 @@
 import React from 'react';
 
-import {Song} from '../../objects/music';
+import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
 
-interface Props {
-    currentSong: Song;
-    songRef: any;
-    setDuration: (duration: number) => void;
-    progressBarRef: any;
-    setIsPlaying: (isPlaying: boolean) => void;
-}
-
-const AudioComponent: React.FC<Props> = ({ currentSong, songRef, setDuration, progressBarRef, setIsPlaying }) => {
+const AudioComponent: React.FC = () => {
+    const context = React.useContext(AudioPlayerContext);
+    const { state: {progressBarRef, currentSong, songRef}, actions: {setIsPlaying, setDuration}} = context;
+    
     const onSongEnd = (): void => {
         setIsPlaying(false);
     };
@@ -24,16 +19,14 @@ const AudioComponent: React.FC<Props> = ({ currentSong, songRef, setDuration, pr
     };
     
     return (
-        <>
-            <audio
-                src={currentSong.songSrc}
-                controls
-                ref={songRef}
-                onLoadedMetadata={() => setDuration(songRef.current.duration)}
-                onEnded={onSongEnd}
-                onTimeUpdate={onTimeUpdate}
-            />
-        </>
+        <audio
+            src={currentSong.songSrc}
+            controls
+            ref={songRef}
+            onLoadedMetadata={() => setDuration(songRef.current.duration)}
+            onEnded={onSongEnd}
+            onTimeUpdate={onTimeUpdate}
+        />
     );
 };
 

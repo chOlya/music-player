@@ -1,12 +1,10 @@
 import React from 'react';
+import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
 
-interface Props {
-    duration: number;
-    songRef: any;
-    progressBarRef: any;
-}
-
-const ProgressBar: React.FC<Props> = ({ songRef, progressBarRef, duration }) => {
+const ProgressBar: React.FC = () => {
+    const context = React.useContext(AudioPlayerContext);
+    const { state: {progressBarRef, duration, songRef} } = context;
+    
     const handleProgressChange = (): void => {
         songRef.current.currentTime = progressBarRef.current.value;
     };
