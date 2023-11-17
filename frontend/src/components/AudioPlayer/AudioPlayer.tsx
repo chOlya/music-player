@@ -53,7 +53,7 @@ export const AudioPlayerContext = React.createContext<AudioPlayerContext>(defaul
 const AudioPlayer: React.FC = () => {
     const songRef = React.useRef();
     const progressBarRef = React.useRef();
-    
+
     const [currentSong, setCurrentSong] = React.useState<Song>(music[0]);
     const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
     const [duration, setDuration] = React.useState<number>(0);
@@ -75,16 +75,20 @@ const AudioPlayer: React.FC = () => {
             setDuration,
         }
     };
-    
+
     return (
-        <div className="audio-player">
-            <AudioPlayerContext.Provider value={value}>
-                <AudioComponent />
-                <ProgressBar />
-                <AudioPlayerButtons />
-                <VolumeBar />
-            </AudioPlayerContext.Provider>
-        </div>
+        <AudioPlayerContext.Provider value={value}>
+            <div className="audio-player">
+                <div className="audio-player__buttons">
+                    <AudioPlayerButtons/>
+                </div>
+                <div className="audio-player__controls">
+                    <AudioComponent/>
+                    <ProgressBar/>
+                    <VolumeBar/>
+                </div>
+            </div>
+        </AudioPlayerContext.Provider>
     );
 };
 

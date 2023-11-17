@@ -1,0 +1,31 @@
+<svg width="215" height="200" viewBox="0 0 215 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Music Player pause" clip-path="url(#clip0_0_1)">
+<rect width="1920" height="1080" transform="translate(-810 -379)" fill="#E3E3E3"/>
+<g id="Background image">
+<path id="Polygon 2" d="M220.836 701L163 508L-232.5 508L-300 701H-618L-563.5 562.5L1110 -379L1110 200.5L220.836 701Z" fill="#05AC6A" fill-opacity="0.15"/>
+<path id="Logo" d="M124.453 -379L539.069 701H220.875L163.022 508.143H-232.31L-299.806 701H-618L-193.741 -379H124.453Z" fill="#0CB673" fill-opacity="0.3"/>
+</g>
+<g id="Player">
+<g id="Rectangle 1" filter="url(#filter0_d_0_1)">
+<rect x="-140" width="580" height="200" rx="8" fill="#FFFDFD"/>
+</g>
+<path id="Logo_2" d="M137.958 0L215 200H155.875L145.125 164.286H71.6667L59.125 200H0L78.8333 0H137.958Z" fill="#0CB673" fill-opacity="0.3"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_1" x="-150" y="-10" width="600" height="220" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_0_1"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.109804 0 0 0 0 0.152941 0 0 0 0 0.298039 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<clipPath id="clip0_0_1">
+<rect width="1920" height="1080" fill="white" transform="translate(-810 -379)"/>
+</clipPath>
+</defs>
+</svg>
