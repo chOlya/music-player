@@ -3,6 +3,7 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 import {music, Song} from '../../objects/music';
 import AudioComponent from '../AudioComponent/AudioComponent';
 import VolumeBar from '../VolumeBar/VolumeBar';
+import AudioPlayerButtons from '../AudioPlayerButtons/AudioPlayerButtons';
 
 const AudioPlayer: React.FC = () => {
     const songRef = React.useRef();
@@ -23,6 +24,15 @@ const AudioPlayer: React.FC = () => {
                 setIsPlaying={setIsPlaying}
             />
             <ProgressBar songRef={songRef} progressBarRef={progressBarRef} duration={duration} />
+            <AudioPlayerButtons
+                songRef={songRef}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+                currentSong={currentSong}
+                setCurrentSong={setCurrentSong}
+                setVolume={setVolume}
+                volume={volume}
+            />
             <VolumeBar songRef={songRef} volume={volume} setVolume={setVolume}/>
         </div>
     );
