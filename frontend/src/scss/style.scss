@@ -35,9 +35,32 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
 
+/* --- common styles --- */
+
 button {
   background: transparent;
 }
+
+.input-range {
+  overflow: hidden;
+  -webkit-appearance: none;
+  background-color: #C5C6C5;
+  cursor: pointer;
+
+  &::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 3px;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1px;
+    background: transparent;
+    box-shadow: -342px 0 0 342px #05AC6A;
+  }
+}
+
+/* --- common styles end --- */
 
 #root {
   height: 100%;
@@ -53,15 +76,25 @@ button {
 }
 
 .audio-player {
-  display: flex;
+  background: url("../images/logo.svg") center no-repeat #FFFDFD;
   border-radius: 8px;
   box-shadow: 0 0 8px 2px #1C274C;
-  background: url("../images/logo.svg") center no-repeat #FFFDFD;
+  padding: 10px;
+  
+  &__content {
+    display: flex;
+    gap: 15px;
+  }
+  
+  &__controls {
+    margin: 10px 0;
+  }
 }
 
 .audio-player-buttons {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 
   button {
     background-color: rgba(12, 182, 115, 0.30);
@@ -84,6 +117,33 @@ button {
     svg {
       width: 33px;
       height: 30px;
+    }
+  }
+}
+
+.volume-bar {
+  display: flex;
+  align-items: center;
+  
+  &__btn {
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  
+  &__range {
+    width: 260px;
+    margin: 0 7px;
+  }
+}
+
+.progress-bar {
+  &__range {
+    width: 342px;
+
+    &::-webkit-slider-runnable-track {
+     height: 4px;
     }
   }
 }

@@ -17,6 +17,7 @@ const ProgressBar: React.FC = () => {
                 onChange={handleProgressChange}
                 defaultValue={0}
                 max={duration}
+                className="progress-bar__range input-range"
             />
         </div>
     );

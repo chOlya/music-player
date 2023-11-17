@@ -25,7 +25,7 @@ const VolumeBar: React.FC = () => {
     
     return (
         <div className="volume-bar">
-            <button onClick={() => turnOff()}>
+            <button onClick={() => turnOff()} className="volume-bar__btn">
                 <SpeakerXMarkIcon />
             </button>
             <input
@@ -34,8 +34,9 @@ const VolumeBar: React.FC = () => {
                 max={100}
                 value={volume}
                 onChange={(e) => onVolumeChange(e)}
+                className="volume-bar__range input-range"
             />
-            <button onClick={() => turnOn()}>
+            <button onClick={() => turnOn()} className="volume-bar__btn">
                 <SpeakerWaveIcon />
             </button>
         </div>

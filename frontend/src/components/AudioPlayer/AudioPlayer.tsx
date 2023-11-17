@@ -79,13 +79,15 @@ const AudioPlayer: React.FC = () => {
     return (
         <AudioPlayerContext.Provider value={value}>
             <div className="audio-player">
-                <div className="audio-player__buttons">
-                    <AudioPlayerButtons/>
-                </div>
-                <div className="audio-player__controls">
-                    <AudioComponent/>
-                    <ProgressBar/>
-                    <VolumeBar/>
+                <div className="audio-player__content">
+                    <div className="audio-player__buttons">
+                        <AudioPlayerButtons/>
+                    </div>
+                    <div className="audio-player__controls">
+                        <VolumeBar/>
+                        <AudioComponent/>
+                        <ProgressBar/>
+                    </div>
                 </div>
             </div>
         </AudioPlayerContext.Provider>
