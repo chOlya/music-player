@@ -5,6 +5,51 @@ import AudioComponent from '../AudioComponent/AudioComponent';
 import VolumeBar from '../VolumeBar/VolumeBar';
 import AudioPlayerButtons from '../AudioPlayerButtons/AudioPlayerButtons';
 
+interface AudioPlayerContext {
+    state: ContextState;
+    actions: ContextActions;
+}
+
+interface ContextState {
+    currentSong: Song;
+    isPlaying: boolean;
+    volume: number;
+    duration: number;
+    songRef: any;
+    progressBarRef: any;
+}
+
+interface ContextActions {
+    setCurrentSong: (currentSong: Song) => void;
+    setIsPlaying: any;
+    setVolume: (volume: number) => void;
+    setDuration: (duration: number) => void;
+}
+
+const defaultValue: AudioPlayerContext = {
+    state: {
+        currentSong: {
+            title: '',
+            author: '',
+            songSrc: '',
+            songCover: '',
+        },
+        isPlaying: false,
+        volume: 50,
+        duration: 0,
+        songRef: null,
+        progressBarRef: null,
+    },
+    actions: {
+        setCurrentSong: () => {},
+        setIsPlaying: () => {},
+        setVolume: () => {},
+        setDuration: () => {},
+    },
+};
+
+export const AudioPlayerContext = React.createContext<AudioPlayerContext>(defaultValue);
+
 const AudioPlayer: React.FC = () => {
     const songRef = React.useRef();
     const progressBarRef = React.useRef();
@@ -13,27 +58,32 @@ const AudioPlayer: React.FC = () => {
     const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
     const [duration, setDuration] = React.useState<number>(0);
     const [volume, setVolume] = React.useState<number>(50);
+
+    const value: AudioPlayerContext = {
+        state: {
+            currentSong,
+            isPlaying,
+            volume,
+            duration,
+            songRef,
+            progressBarRef
+        },
+        actions: {
+            setCurrentSong,
+            setIsPlaying,
+            setVolume,
+            setDuration,
+        }
+    };
     
     return (
         <div className="audio-player">
-            <AudioComponent
-                currentSong={currentSong}
-                songRef={songRef}
-                setDuration={setDuration}
-                progressBarRef={progressBarRef}
-                setIsPlaying={setIsPlaying}
-            />
-            <ProgressBar songRef={songRef} progressBarRef={progressBarRef} duration={duration} />
-            <AudioPlayerButtons
-                songRef={songRef}
-                isPlaying={isPlaying}
-                setIsPlaying={setIsPlaying}
-                currentSong={currentSong}
-                setCurrentSong={setCurrentSong}
-                setVolume={setVolume}
-                volume={volume}
-            />
-            <VolumeBar songRef={songRef} volume={volume} setVolume={setVolume}/>
+            <AudioPlayerContext.Provider value={value}>
+                <AudioComponent />
+                <ProgressBar />
+                <AudioPlayerButtons />
+                <VolumeBar />
+            </AudioPlayerContext.Provider>
         </div>
     );
 };
