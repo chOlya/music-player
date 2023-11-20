@@ -24,6 +24,7 @@ interface ContextActions {
     setIsPlaying: any;
     setVolume: (volume: number) => void;
     setDuration: (duration: number) => void;
+    onSongChange: (currentSong: Song, isForward: boolean) => void;
 }
 
 const defaultValue: AudioPlayerContext = {
@@ -45,6 +46,7 @@ const defaultValue: AudioPlayerContext = {
         setIsPlaying: () => {},
         setVolume: () => {},
         setDuration: () => {},
+        onSongChange: () => {},
     },
 };
 
@@ -58,6 +60,19 @@ const AudioPlayer: React.FC = () => {
     const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
     const [duration, setDuration] = React.useState<number>(0);
     const [volume, setVolume] = React.useState<number>(50);
+    
+    const onSongChange = (currentSong: Song, isForward: boolean): void => {
+        const currentIndex: number = music.indexOf(currentSong);
+        let newIndex: number;
+
+        if (isForward) {
+            newIndex = (currentIndex + 1) % music.length;
+        } else {
+            newIndex = currentIndex === 0 ? music.length - 1 : currentIndex - 1;
+        }
+
+        setCurrentSong(music[newIndex]);
+    };
 
     const value: AudioPlayerContext = {
         state: {
@@ -73,6 +88,7 @@ const AudioPlayer: React.FC = () => {
             setIsPlaying,
             setVolume,
             setDuration,
+            onSongChange,
         }
     };
 

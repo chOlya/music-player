@@ -1,11 +1,10 @@
 import React from 'react';
 import {PlayIcon, PauseIcon, ForwardIcon, BackwardIcon} from '@heroicons/react/24/outline';
-import {music, Song} from '../../objects/music';
 import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
 
 const AudioPlayerButtons: React.FC = () => {
     const context = React.useContext(AudioPlayerContext);
-    const { state: {isPlaying, currentSong, songRef}, actions: {setIsPlaying, setCurrentSong}} = context;
+    const { state: {isPlaying, currentSong, songRef}, actions: {setIsPlaying, onSongChange}} = context;
     
     React.useEffect(() => {
         if (isPlaying) {
@@ -30,21 +29,6 @@ const AudioPlayerButtons: React.FC = () => {
                 coverElement.className = "pulse-animation";
             }
         }
-    };
-    
-    const onSongChange = (currentSong: Song, isForward: boolean): void => {
-        if (!music) return;
-        
-       const currentIndex: number = music.indexOf(currentSong);
-       let newIndex: number;
-       
-       if (isForward) {
-           newIndex = (currentIndex + 1) % music.length;
-       } else {
-           newIndex = currentIndex === 0 ? music.length - 1 : currentIndex - 1;
-       }
-       
-       setCurrentSong(music[newIndex]);
     };
     
     return (
