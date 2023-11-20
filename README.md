@@ -8,14 +8,14 @@
 
 Приложение использует версию node.js 20.3.0.
 ```
- `git clone https://github.com/chOlya/website-ts.git`
+ git clone https://github.com/chOlya/website-ts.git
 ```
 Затем перейти в скаченный проект.
 ```
-`npm install`
+npm install
 ```
 Для запуска введите 
 ```
-`npm start`
+npm start
 ```
 Приложение будет запущено.
