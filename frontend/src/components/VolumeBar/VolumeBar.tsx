@@ -7,7 +7,8 @@ const VolumeBar: React.FC = () => {
     const { state: {volume, songRef}, actions: {setVolume}} = context;
 
     const onVolumeChange = (e: any) => {
-        setVolume(e.target.value);
+        const volume = e.target.value;
+        setVolume(volume);
         songRef.current.volume = volume / 100;
     }
     
