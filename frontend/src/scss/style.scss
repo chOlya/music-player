@@ -36,7 +36,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
 
 /* --- common styles --- */
-
 button {
   background: transparent;
 }
@@ -46,6 +45,7 @@ button {
   -webkit-appearance: none;
   background-color: #C5C6C5;
   cursor: pointer;
+  width: 100%;
 
   &::-webkit-slider-runnable-track {
     -webkit-appearance: none;
@@ -67,27 +67,73 @@ button {
 }
 
 .app-container {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100%;
   background: url("../images/background.jpg") center no-repeat;
+  background-size: cover;
 }
 
 .audio-player {
-  background: url("../images/logo.svg") center no-repeat #FFFDFD;
-  border-radius: 8px;
-  box-shadow: 0 0 8px 2px #1C274C;
-  padding: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
   
   &__content {
     display: flex;
     gap: 15px;
+    background: url("../images/logo.svg") center no-repeat #FFFDFD;
+    border-radius: 8px;
+    box-shadow: 0 0 8px 2px #1C274C;
+    padding: 10px 80px 10px 10px;
+    max-width: min(90%, 485px);
+    width: 100%;
   }
   
   &__controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     margin: 10px 0;
+    width: 80%;
+  }
+  
+  &__cover {
+    height: 205px;
+    width: 205px;
+    margin-left: -100px;
+
+    img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      z-index: 1;
+    }
+  }
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px 2px #1C274C;
+    background: #fff;
+    padding: 10px;
+    margin: 0 20px;
+
+    &__content {
+      box-shadow: none;
+      padding: 10px;
+      max-width: 100%;
+    }
+
+    &__cover {
+      order: -1;
+      margin-left: 0;
+    }
   }
 }
 
@@ -124,6 +170,7 @@ button {
 .volume-bar {
   display: flex;
   align-items: center;
+  width: 95%;
   
   &__btn {
     svg {
@@ -133,17 +180,25 @@ button {
   }
   
   &__range {
-    width: 260px;
     margin: 0 7px;
   }
 }
 
 .progress-bar {
+  width: 100%;
+  
   &__range {
-    width: 342px;
-
     &::-webkit-slider-runnable-track {
      height: 4px;
     }
+  }
+}
+
+.audio-component {
+  width: 90%;
+  
+  &__song-name {
+    font-size: 24px;
+    text-align: center;
   }
 }

@@ -89,6 +89,9 @@ const AudioPlayer: React.FC = () => {
                         <ProgressBar/>
                     </div>
                 </div>
+                <div className="audio-player__cover">
+                    <img src={currentSong.songCover} alt="Song cover" />
+                </div>
             </div>
         </AudioPlayerContext.Provider>
     );
