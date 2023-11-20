@@ -5,10 +5,17 @@ import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
 
 const AudioPlayerButtons: React.FC = () => {
     const context = React.useContext(AudioPlayerContext);
-    const { state: {isPlaying, currentSong, songRef}, actions: {setIsPlaying, setCurrentSong, setVolume}} = context;
+    const { state: {isPlaying, currentSong, songRef}, actions: {setIsPlaying, setCurrentSong}} = context;
     
-    const handlePlay = (isPlaying: boolean): void => {
-        isPlaying ? songRef.current?.pause() : songRef.current?.play();
+    React.useEffect(() => {
+        if (isPlaying) {
+            songRef.current.play();
+        } else {
+            songRef.current.pause();
+        }
+    }, [isPlaying, currentSong]);
+    
+    const onPlay = (isPlaying: boolean): void => {
         setIsPlaying((prev: boolean) => !prev);
 
         const shadowElement = document.getElementById("shadow");
@@ -45,7 +52,7 @@ const AudioPlayerButtons: React.FC = () => {
             <button className="audio-player-buttons__back">
                 <BackwardIcon onClick={() => onSongChange(currentSong, false)} />
             </button>
-            <button onClick={() => handlePlay(isPlaying)} className="audio-player-buttons__play">
+            <button onClick={() => onPlay(isPlaying)} className="audio-player-buttons__play">
                 {isPlaying
                     ? <PauseIcon />
                     : <PlayIcon />
