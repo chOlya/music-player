@@ -33,7 +33,7 @@ const AudioPlayerButtons: React.FC = () => {
     };
     
     const onChange = (currentSong: Song, isForward: boolean, isPlaying: boolean) => {
-        onSongChange(currentSong, false)
+        onSongChange(currentSong, isForward)
         !isPlaying && setIsPlaying(true);
     };
     
