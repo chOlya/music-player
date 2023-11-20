@@ -38,6 +38,15 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /* --- common styles --- */
 button {
   background: transparent;
+  border-radius: 50%;
+  
+  &:hover {
+    outline: 1px #ADAEB1 solid;
+    
+    svg {
+      fill: #ADAEB1;
+    }
+  }
 }
 
 .input-range {
@@ -147,7 +156,6 @@ button {
 
   button {
     background-color: rgba(12, 182, 115, 0.30);
-    border-radius: 50%;
   }
   
   &__back,
