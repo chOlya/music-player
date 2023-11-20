@@ -1,3 +1,5 @@
+@import 'variables';
+
 *{
   padding: 0;
   margin: 0;
@@ -41,10 +43,10 @@ button {
   border-radius: 50%;
   
   &:hover {
-    outline: 1px #ADAEB1 solid;
+    outline: 1px $light-grey solid;
     
     svg {
-      fill: #ADAEB1;
+      fill: $light-grey;
     }
   }
 }
@@ -52,7 +54,7 @@ button {
 .input-range {
   overflow: hidden;
   -webkit-appearance: none;
-  background-color: #C5C6C5;
+  background-color: $light-grey;
   cursor: pointer;
   width: 100%;
 
@@ -65,7 +67,7 @@ button {
     -webkit-appearance: none;
     width: 1px;
     background: transparent;
-    box-shadow: -342px 0 0 342px #05AC6A;
+    box-shadow: -342px 0 0 342px $primary-green;
   }
 }
 
@@ -94,9 +96,9 @@ button {
   &__content {
     display: flex;
     gap: 15px;
-    background: url("../images/logo.svg") center no-repeat #FFFDFD;
+    background: url("../images/logo.svg") center no-repeat $off-white;
     border-radius: 8px;
-    box-shadow: 0 0 8px 2px #1C274C;
+    box-shadow: 0 0 8px 2px $box-shadow;
     padding: 10px 80px 10px 10px;
     max-width: min(90%, 500px);
     width: 100%;
@@ -127,11 +129,11 @@ button {
     }
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: $width-sm) {
     flex-direction: column;
     gap: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 8px 2px #1C274C;
+    box-shadow: 0 0 8px 2px $box-shadow;
     background: #fff;
     padding: 30px;
     width: 90%;
