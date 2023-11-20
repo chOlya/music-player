@@ -80,6 +80,7 @@ button {
   position: relative;
   display: flex;
   align-items: center;
+  width: min(90%, 600px);
   
   &__content {
     display: flex;
@@ -88,7 +89,7 @@ button {
     border-radius: 8px;
     box-shadow: 0 0 8px 2px #1C274C;
     padding: 10px 80px 10px 10px;
-    max-width: min(90%, 485px);
+    max-width: min(90%, 500px);
     width: 100%;
   }
   
