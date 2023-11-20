@@ -1,7 +1,7 @@
 import React from 'react';
 import {PlayIcon, PauseIcon, ForwardIcon, BackwardIcon} from '@heroicons/react/24/outline';
 import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
-import {music} from '../../objects/music';
+import {music, Song} from '../../objects/music';
 
 const AudioPlayerButtons: React.FC = () => {
     const context = React.useContext(AudioPlayerContext);
@@ -32,12 +32,17 @@ const AudioPlayerButtons: React.FC = () => {
         }
     };
     
+    const onChange = (currentSong: Song, isForward: boolean, isPlaying: boolean) => {
+        onSongChange(currentSong, false)
+        !isPlaying && setIsPlaying(true);
+    };
+    
     const disabledButton = music.length <= 1;
     
     return (
         <div className="audio-player-buttons">
             <button className="audio-player-buttons__back" disabled={disabledButton}>
-                <BackwardIcon onClick={() => onSongChange(currentSong, false)} />
+                <BackwardIcon onClick={() => onChange(currentSong, false, isPlaying)} />
             </button>
             <button onClick={() => onPlay(isPlaying)} className="audio-player-buttons__play">
                 {isPlaying
@@ -46,7 +51,7 @@ const AudioPlayerButtons: React.FC = () => {
                 }
             </button>
             <button className="audio-player-buttons__forward" disabled={disabledButton}>
-                <ForwardIcon onClick={() => onSongChange(currentSong, true)}/>
+                <ForwardIcon onClick={() => onChange(currentSong, true, isPlaying)}/>
             </button>
         </div>
     );
