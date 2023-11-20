@@ -96,12 +96,14 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 15px;
     align-items: center;
     margin: 10px 0;
     width: 80%;
   }
   
   &__cover {
+    position: relative;
     height: 205px;
     width: 205px;
     margin-left: -100px;
@@ -121,8 +123,8 @@ button {
     border-radius: 8px;
     box-shadow: 0 0 8px 2px #1C274C;
     background: #fff;
-    padding: 10px;
-    margin: 0 20px;
+    padding: 30px;
+    width: 90%;
 
     &__content {
       box-shadow: none;
@@ -202,3 +204,49 @@ button {
     text-align: center;
   }
 }
+
+/* --- animations --- */
+
+.shadow-animation {
+  animation: shadow 2s linear infinite;
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  background: #000;
+  width: 270px;
+  height: 270px;
+  opacity: 0;
+  border-radius: 50%;
+}
+
+@keyframes shadow {
+  from {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --- animations end --- */
+

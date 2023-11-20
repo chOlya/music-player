@@ -10,6 +10,19 @@ const AudioPlayerButtons: React.FC = () => {
     const handlePlay = (isPlaying: boolean): void => {
         isPlaying ? songRef.current?.pause() : songRef.current?.play();
         setIsPlaying((prev: boolean) => !prev);
+
+        const shadowElement = document.getElementById("shadow");
+        const coverElement = document.getElementById("cover");
+        
+        if (shadowElement && coverElement) {
+            if (isPlaying) {
+                shadowElement.className = "";
+                coverElement.className = "";
+            } else {
+                shadowElement.className = "shadow-animation";
+                coverElement.className = "pulse-animation";
+            }
+        }
     };
     
     const onSongChange = (currentSong: Song, isForward: boolean): void => {

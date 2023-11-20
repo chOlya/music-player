@@ -90,7 +90,8 @@ const AudioPlayer: React.FC = () => {
                     </div>
                 </div>
                 <div className="audio-player__cover">
-                    <img src={currentSong.songCover} alt="Song cover" />
+                    <img src={currentSong.songCover} alt="Song cover" id="cover" />
+                    <div id="shadow" className="shadow" />
                 </div>
             </div>
         </AudioPlayerContext.Provider>
