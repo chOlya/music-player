@@ -199,6 +199,8 @@ button {
   width: 100%;
   
   &__range {
+    transition: opacity 0.5s;
+    
     &::-webkit-slider-runnable-track {
      height: 4px;
     }
