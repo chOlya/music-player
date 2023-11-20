@@ -4,14 +4,14 @@ import {AudioPlayerContext} from '../AudioPlayer/AudioPlayer';
 
 const AudioComponent: React.FC = () => {
     const context = React.useContext(AudioPlayerContext);
-    const {state: {progressBarRef, currentSong, songRef}, actions: {setIsPlaying, setDuration}} = context;
+    const {state: {progressBarRef, currentSong, songRef}, actions: {setDuration, onSongChange}} = context;
 
     const songTitle = `${currentSong.author} - ${currentSong.title}`;
 
     const onSongEnd = (): void => {
-        setIsPlaying(false);
+        onSongChange(currentSong, true);
     };
-
+    
     const onTimeUpdate = (): void => {
         const changeProgress = () => {
             progressBarRef.current.value = songRef.current.currentTime;
