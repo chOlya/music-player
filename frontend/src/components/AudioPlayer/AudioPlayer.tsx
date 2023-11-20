@@ -91,6 +91,14 @@ const AudioPlayer: React.FC = () => {
             onSongChange,
         }
     };
+    
+    if (music.length === 0) {
+        return (
+            <div className="empty-content">
+                Sorry, music is not available right now
+            </div>
+        );
+    }
 
     return (
         <AudioPlayerContext.Provider value={value}>
